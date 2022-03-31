@@ -1,4 +1,4 @@
-package xyz.gozdzik.cryptolist.data.repository
+package xyz.gozdzik.cryptolist.data.local.repository
 
 import xyz.gozdzik.cryptolist.core.DataMapper
 import xyz.gozdzik.cryptolist.data.model.CryptoCurrencyInfoDTO
