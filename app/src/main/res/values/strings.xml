@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">CryptoList</string>
     <string name="demo_fetch_data">Fetch data</string>
+    <string name="search">Search</string>
 </resources>
