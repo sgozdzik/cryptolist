@@ -41,7 +41,7 @@ class DatabaseModule {
             .addCallback(object : RoomDatabase.Callback() {
                 override fun onCreate(db: SupportSQLiteDatabase) {
                     super.onCreate(db)
-                    CoroutineScope(Dispatchers.IO).launch {
+                    CoroutineScope(Dispatchers.Default).launch {
                         cryptoCurrencyInfoDaoProvider.get().insertAll(
                             cryptoCurrencyInfoPrepopulateRepository.getAll()
                         )

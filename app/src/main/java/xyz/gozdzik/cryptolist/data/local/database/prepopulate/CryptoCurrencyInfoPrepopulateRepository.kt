@@ -1,4 +1,4 @@
-package xyz.gozdzik.cryptolist.data.local.repository
+package xyz.gozdzik.cryptolist.data.local.database.prepopulate
 
 import xyz.gozdzik.cryptolist.core.JsonAssetReader
 import xyz.gozdzik.cryptolist.data.model.CryptoCurrencyInfoDTO
