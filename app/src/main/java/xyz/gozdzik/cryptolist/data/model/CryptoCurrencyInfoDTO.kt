@@ -5,11 +5,12 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+const val CRYPTO_CURRENCY_INFO_TABLE_NAME = "CryptoCurrencyInfo"
 private const val CRYPTO_CURRENCY_INFO_COLUMN_ID = "id"
 private const val CRYPTO_CURRENCY_INFO_COLUMN_NAME = "name"
 private const val CRYPTO_CURRENCY_INFO_COLUMN_SYMBOL = "symbol"
 
-@Entity
+@Entity(tableName = CRYPTO_CURRENCY_INFO_TABLE_NAME)
 data class CryptoCurrencyInfoDTO(
     @PrimaryKey
     @ColumnInfo(name = CRYPTO_CURRENCY_INFO_COLUMN_ID)

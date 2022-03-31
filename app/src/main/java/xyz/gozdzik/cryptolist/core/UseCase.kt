@@ -9,7 +9,7 @@ abstract class UseCase<out TYPE, in PARAMETERS>(
 
     abstract suspend fun getData(parameters: PARAMETERS?): Result<TYPE>
 
-    fun launch(parameters: PARAMETERS?, onFinish: (Result<TYPE>) -> Unit) {
+    fun launch(onFinish: (Result<TYPE>) -> Unit, parameters: PARAMETERS? = null) {
         CoroutineScope(taskScheduler).launch {
             val result = getData(parameters)
             withContext(resultScheduler) {
