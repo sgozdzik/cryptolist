@@ -1,4 +1,4 @@
-package xyz.gozdzik.cryptolist.core
+package xyz.gozdzik.cryptolist.core.utils
 
 import android.content.res.AssetManager
 

@@ -14,11 +14,10 @@ import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import xyz.gozdzik.cryptolist.core.JsonAssetReader
-import xyz.gozdzik.cryptolist.data.local.repository.CryptoCurrencyInfoDao
-import xyz.gozdzik.cryptolist.data.local.repository.CryptoCurrencyInfoPrepopulateRepository
-import xyz.gozdzik.cryptolist.data.model.parsers.CryptoCurrencyInfoJsonParser
-import java.util.concurrent.Executors
+import xyz.gozdzik.cryptolist.core.utils.JsonAssetReader
+import xyz.gozdzik.cryptolist.data.local.database.prepopulate.CurrencyInfoPrepopulateRepository
+import xyz.gozdzik.cryptolist.data.local.repository.CurrencyInfoDao
+import xyz.gozdzik.cryptolist.data.model.parsers.CurrencyInfoJsonParser
 import javax.inject.Provider
 import javax.inject.Singleton
 
@@ -30,8 +29,8 @@ class DatabaseModule {
     @Singleton
     fun provideAppDatabase(
         @ApplicationContext appContext: Context,
-        cryptoCurrencyInfoDaoProvider: Provider<CryptoCurrencyInfoDao>,
-        cryptoCurrencyInfoPrepopulateRepository: CryptoCurrencyInfoPrepopulateRepository
+        currencyInfoDaoProvider: Provider<CurrencyInfoDao>,
+        currencyInfoPrepopulateRepository: CurrencyInfoPrepopulateRepository
     ) =
         Room.databaseBuilder(
             appContext,
@@ -42,8 +41,8 @@ class DatabaseModule {
                 override fun onCreate(db: SupportSQLiteDatabase) {
                     super.onCreate(db)
                     CoroutineScope(Dispatchers.Default).launch {
-                        cryptoCurrencyInfoDaoProvider.get().insertAll(
-                            cryptoCurrencyInfoPrepopulateRepository.getAll()
+                        currencyInfoDaoProvider.get().insertAll(
+                            currencyInfoPrepopulateRepository.getAll()
                         )
                     }
                 }
@@ -51,14 +50,14 @@ class DatabaseModule {
             .build()
 
     @Provides
-    fun provideCryptoCurrencyInfoDao(appDatabase: AppDatabase) =
-        appDatabase.cryptoCurrencyInfoDao()
+    fun provideCurrencyInfoDao(appDatabase: AppDatabase) =
+        appDatabase.currencyInfoDao()
 
     @Provides
-    fun provideCryptoCurrencyInfoPrepopulateRepository(
+    fun provideCurrencyInfoPrepopulateRepository(
         jsonAssetReader: JsonAssetReader,
-        parser: CryptoCurrencyInfoJsonParser
-    ) = CryptoCurrencyInfoPrepopulateRepository(
+        parser: CurrencyInfoJsonParser
+    ) = CurrencyInfoPrepopulateRepository(
         jsonAssetReader, parser
     )
 
@@ -70,6 +69,6 @@ class DatabaseModule {
         appContext.assets
 
     @Provides
-    fun provideCryptoCurrencyInfoJsonParser() = CryptoCurrencyInfoJsonParser(Gson())
+    fun provideCurrencyInfoJsonParser() = CurrencyInfoJsonParser(Gson())
 
 }
