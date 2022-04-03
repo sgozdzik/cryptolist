@@ -54,6 +54,10 @@ class SearchToolbarView : ConstraintLayout {
         }
     }
 
+    fun setTitle(title: String) {
+        binding.toolbarTitle.text = title
+    }
+
     fun setSearchCallback(searchCallback: (String) -> Unit) {
         binding.searchBar.addOnTextChangedListener {
             searchCallback(it)

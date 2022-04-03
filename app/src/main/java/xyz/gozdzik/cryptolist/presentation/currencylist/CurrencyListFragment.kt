@@ -19,9 +19,8 @@ import xyz.gozdzik.cryptolist.presentation.model.SortParameter
 class CurrencyListFragment : Fragment() {
 
     private val adapter: CurrencyListAdapter by lazy {
-        CurrencyListAdapter {
-            //TODO: Show snackbar or something similar
-            TODO()
+        CurrencyListAdapter { currencyInfoItem ->
+            binding.searchToolbar.setTitle(currencyInfoItem.name)
         }
     }
     private val args: CurrencyListFragmentArgs by navArgs()
