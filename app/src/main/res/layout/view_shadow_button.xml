@@ -8,14 +8,14 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="@drawable/round_background"
-        android:padding="15dp">
+        android:padding="@dimen/margin_normal">
 
         <TextView
             android:id="@+id/button_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:textSize="15sp"
+            android:textSize="@dimen/text_normal_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -72,4 +72,8 @@ class SearchToolbarView : ConstraintLayout {
         }
     }
 
+    fun setRightButtonIcon(iconResId: Int) {
+        binding.rightButton.setImageResource(iconResId)
+    }
+
 }

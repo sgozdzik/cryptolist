@@ -11,7 +11,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
+import xyz.gozdzik.cryptolist.R
 import xyz.gozdzik.cryptolist.databinding.FragmentCurrencyListBinding
+import xyz.gozdzik.cryptolist.presentation.model.SortParameter
 
 @AndroidEntryPoint
 class CurrencyListFragment : Fragment() {
@@ -45,11 +47,17 @@ class CurrencyListFragment : Fragment() {
     private fun setupView() {
         binding.apply {
             rvCryptoList.adapter = adapter
-            searchToolbar.leftButtonCallback {
-                findNavController().popBackStack()
-            }
-            searchToolbar.setSearchCallback { searchQuery ->
-                viewModel.search(searchQuery)
+            searchToolbar.apply {
+                setSearchCallback { searchQuery ->
+                    viewModel.search(searchQuery)
+                }
+                leftButtonCallback {
+                    findNavController().popBackStack()
+                }
+                rightButtonCallback {
+                    viewModel.sortCurrencies(SortParameter.BY_NAME_ASC)
+                }
+                setRightButtonIcon(R.drawable.ic_sort)
             }
         }
     }

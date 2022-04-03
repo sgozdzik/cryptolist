@@ -7,4 +7,9 @@
     <dimen name="text_small_size">12sp</dimen>
     <dimen name="text_normal_size">15sp</dimen>
     <dimen name="text_big_size">17sp</dimen>
+    <dimen name="small_icon_size">20dp</dimen>
+    <dimen name="margin_big">26dp</dimen>
+    <dimen name="margin_extra_big">32dp</dimen>
+    <dimen name="icon_click_area">60dp</dimen>
+    <dimen name="elevation_small">2dp</dimen>
 </resources>
