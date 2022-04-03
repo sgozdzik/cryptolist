@@ -5,9 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import xyz.gozdzik.cryptolist.core.utils.ignoreInitialValue
 import xyz.gozdzik.cryptolist.databinding.FragmentCurrencyListBinding
 
+@AndroidEntryPoint
 class CurrencyListFragment : Fragment() {
 
     private val adapter: CurrencyListAdapter by lazy {
@@ -17,6 +23,7 @@ class CurrencyListFragment : Fragment() {
         }
     }
     private val args: CurrencyListFragmentArgs by navArgs()
+    private val viewModel: CurrencyListViewModel by viewModels()
     private lateinit var binding: FragmentCurrencyListBinding
 
     override fun onCreateView(
@@ -30,14 +37,24 @@ class CurrencyListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.initViewModel(args.currencies.toList())
         setupView()
+        observeViewModel()
     }
 
     private fun setupView() {
         binding.apply {
             rvCryptoList.adapter = adapter
         }
-        adapter.submitList(args.currencies.toList())
+    }
+
+    private fun observeViewModel() {
+        lifecycleScope.launchWhenResumed {
+            viewModel.currenciesInfoItemsObservable
+                .collect { currenciesInfoItems ->
+                    adapter.submitList(currenciesInfoItems)
+                }
+        }
     }
 
 }
