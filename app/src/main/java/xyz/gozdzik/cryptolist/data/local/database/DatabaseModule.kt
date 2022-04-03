@@ -47,7 +47,7 @@ class DatabaseModule {
                     }
                 }
             })
-            .build()
+            .build().initializeDatabaseAfterBuild()
 
     @Provides
     fun provideCurrencyInfoDao(appDatabase: AppDatabase) =
