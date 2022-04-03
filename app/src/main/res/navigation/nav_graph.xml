@@ -6,7 +6,7 @@
     app:startDestination="@id/demoFragment">
     <fragment
         android:id="@+id/demoFragment"
-        android:name="xyz.gozdzik.cryptolist.presentation.DemoFragment"
+        android:name="xyz.gozdzik.cryptolist.presentation.demo.DemoFragment"
         android:label="DemoFragment"
         tools:layout="@layout/fragment_demo" >
         <action
@@ -15,7 +15,11 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentCurrencyList"
-        android:name="xyz.gozdzik.cryptolist.presentation.CurrencyListFragment"
+        android:name="xyz.gozdzik.cryptolist.presentation.currencylist.CurrencyListFragment"
         android:label="CurrencyListFragment"
-        tools:layout="@layout/fragment_currency_list" />
+        tools:layout="@layout/fragment_currency_list" >
+        <argument
+            android:name="currencies"
+            app:argType="xyz.gozdzik.cryptolist.presentation.model.CurrencyInfoItem[]"/>
+    </fragment>
 </navigation>
