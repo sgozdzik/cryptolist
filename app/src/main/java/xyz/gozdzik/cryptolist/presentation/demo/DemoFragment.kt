@@ -9,8 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
-import xyz.gozdzik.cryptolist.core.utils.ignoreInitialValue
+import xyz.gozdzik.cryptolist.core.utils.collectEvent
 import xyz.gozdzik.cryptolist.databinding.FragmentDemoBinding
 
 @AndroidEntryPoint
@@ -33,6 +32,11 @@ class DemoFragment : Fragment() {
         setupView()
     }
 
+    override fun onStop() {
+        super.onStop()
+        viewModel.clearEvents()
+    }
+
     private fun setupView() {
         binding.btnFetchData.setOnClickListener {
             viewModel.getCurrenciesFromDatabase()
@@ -41,16 +45,15 @@ class DemoFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        lifecycleScope.launchWhenResumed {
+        viewLifecycleOwner.lifecycleScope.launchWhenResumed {
             viewModel.currenciesInfoItemsObservable
-                .ignoreInitialValue()
-                .collect { currenciesInfoItems ->
-                findNavController().navigate(
-                    DemoFragmentDirections.navigateToFragmentCurrencyList(
-                        currenciesInfoItems.toTypedArray()
+                .collectEvent { currenciesInfoItems ->
+                    findNavController().navigate(
+                        DemoFragmentDirections.navigateToFragmentCurrencyList(
+                            currenciesInfoItems.toTypedArray()
+                        )
                     )
-                )
-            }
+                }
         }
     }
 

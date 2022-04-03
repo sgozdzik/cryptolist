@@ -10,7 +10,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
-import xyz.gozdzik.cryptolist.core.utils.ignoreInitialValue
 import xyz.gozdzik.cryptolist.databinding.FragmentCurrencyListBinding
 
 @AndroidEntryPoint
