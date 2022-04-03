@@ -11,7 +11,9 @@ import xyz.gozdzik.cryptolist.presentation.model.SortParameter
 import javax.inject.Inject
 
 @HiltViewModel
-class CurrencyListViewModel @Inject constructor() : ViewModel() {
+class CurrencyListViewModel @Inject constructor(
+    private val currencyInfoItemFilterer: CurrencyInfoItemFilterer
+) : ViewModel() {
 
     private val currenciesInfoItems = MutableStateFlow<List<CurrencyInfoItem>>(emptyList())
     private val filterParameters = MutableStateFlow(FilterParameters())
@@ -19,22 +21,8 @@ class CurrencyListViewModel @Inject constructor() : ViewModel() {
         get() = currenciesInfoItems.combine(
             filterParameters
         ) { currenciesInfoItems, filterParameter ->
-            when (filterParameter.sortParameter) {
-                SortParameter.DEFAULT -> currenciesInfoItems
-                SortParameter.BY_NAME_ASC -> currenciesInfoItems
-                    .sortedBy { currencyInfoItem ->
-                        currencyInfoItem.name
-                    }
-                SortParameter.BY_NAME_DESC -> currenciesInfoItems
-                    .sortedByDescending { currencyInfoItem ->
-                        currencyInfoItem.id
-                    }
-            }.filter { currencyInfoItem ->
-                filterParameter.searchQuery?.let { searchQuery ->
-                    currencyInfoItem.name.lowercase().contains(searchQuery.lowercase())
-                } ?: true
-            }
-        }.stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
+            currencyInfoItemFilterer.applyFilterParameters(filterParameter, currenciesInfoItems)
+        }.stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 
     fun initViewModel(currencyInfoItems: List<CurrencyInfoItem>) {
         this.currenciesInfoItems.update {

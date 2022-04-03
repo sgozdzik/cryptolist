@@ -25,7 +25,6 @@ class CurrencyListAdapter(private val clickListener: (CurrencyInfoItem) -> Unit)
     override fun onBindViewHolder(holder: CurrencyItemViewHolder, position: Int) =
         holder.bind(getItem(position))
 
-    //TODO: Check if names for objects should be from big letter
     object DiffItemCallback : DiffUtil.ItemCallback<CurrencyInfoItem>() {
         override fun areItemsTheSame(
             oldItem: CurrencyInfoItem,
