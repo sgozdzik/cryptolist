@@ -7,9 +7,9 @@ abstract class UseCase<out TYPE, in PARAMETERS>(
     private val resultScheduler: CoroutineDispatcher = Dispatchers.Main
 ) {
 
-    abstract suspend fun getData(parameters: PARAMETERS?): Result<TYPE>
+    abstract suspend fun getData(parameters: PARAMETERS? = null): Result<TYPE>
 
-    fun launch(onFinish: (Result<TYPE>) -> Unit, parameters: PARAMETERS? = null) {
+    fun launch(parameters: PARAMETERS? = null, onFinish: (Result<TYPE>) -> Unit) {
         CoroutineScope(taskScheduler).launch {
             val result = getData(parameters)
             withContext(resultScheduler) {

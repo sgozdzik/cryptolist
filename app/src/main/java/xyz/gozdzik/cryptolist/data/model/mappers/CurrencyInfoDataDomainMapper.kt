@@ -1,10 +1,10 @@
 package xyz.gozdzik.cryptolist.data.model.mappers
 
-import xyz.gozdzik.cryptolist.core.DataMapper
+import xyz.gozdzik.cryptolist.core.DataDomainMapper
 import xyz.gozdzik.cryptolist.data.model.CurrencyInfoDto
 import xyz.gozdzik.cryptolist.domain.model.CurrencyInfo
 
-class CurrencyInfoMapper : DataMapper<CurrencyInfo, CurrencyInfoDto> {
+class CurrencyInfoDataDomainMapper : DataDomainMapper<CurrencyInfo, CurrencyInfoDto> {
 
     override fun mapToDomain(data: CurrencyInfoDto): CurrencyInfo =
         CurrencyInfo(

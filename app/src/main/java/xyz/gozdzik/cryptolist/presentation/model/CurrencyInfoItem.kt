@@ -1,10 +1,12 @@
 package xyz.gozdzik.cryptolist.presentation.model
 
-//TODO: Think about another name
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class CurrencyInfoItem(
     val id: String,
-    //TODO: Change name?
-    val capitalLetter: String,
+    val initialLetter: String,
     val name: String,
     val symbol: String
-)
+) : Parcelable

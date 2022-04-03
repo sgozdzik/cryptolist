@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import xyz.gozdzik.cryptolist.databinding.FragmentCurrencyListBinding
 
 class CurrencyListFragment : Fragment() {
@@ -15,6 +16,7 @@ class CurrencyListFragment : Fragment() {
             TODO()
         }
     }
+    private val args: CurrencyListFragmentArgs by navArgs()
     private lateinit var binding: FragmentCurrencyListBinding
 
     override fun onCreateView(
@@ -35,6 +37,7 @@ class CurrencyListFragment : Fragment() {
         binding.apply {
             rvCryptoList.adapter = adapter
         }
+        adapter.submitList(args.currencies.toList())
     }
 
 }
