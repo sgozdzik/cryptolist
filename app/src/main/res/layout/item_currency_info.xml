@@ -14,6 +14,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:background="@drawable/round_background"
+        android:elevation="@dimen/elevation"
         android:padding="@dimen/margin_normal">
 
         <TextView
@@ -21,6 +25,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{item.initialLetter}"
+            android:background="@drawable/round_background"
+            android:backgroundTint="@color/white_alpha_50"
+            android:padding="@dimen/margin_normal"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/text_big_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -32,6 +41,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_normal"
             android:text="@{item.name}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_normal_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_icon"
             app:layout_constraintTop_toTopOf="parent"
@@ -42,10 +53,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{item.symbol}"
+            android:textColor="@color/white_alpha_50"
+            android:textSize="@dimen/text_small_size"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_name"
+            app:layout_constraintStart_toEndOf="@+id/tv_name"
+            android:layout_marginStart="@dimen/margin_small"
+            app:layout_constraintTop_toTopOf="@+id/tv_name"
+            tools:text="BTC" />
+
+        <ImageView
+            android:id="@+id/iv_arrow"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:src="@drawable/ic_arrow"
+            android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="BTC" />
+            app:tint="@color/white_alpha_50" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

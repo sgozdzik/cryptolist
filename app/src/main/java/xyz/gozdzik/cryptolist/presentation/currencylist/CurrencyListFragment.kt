@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -44,6 +45,12 @@ class CurrencyListFragment : Fragment() {
     private fun setupView() {
         binding.apply {
             rvCryptoList.adapter = adapter
+            searchToolbar.leftButtonCallback {
+                findNavController().popBackStack()
+            }
+            searchToolbar.setSearchCallback { searchQuery ->
+                viewModel.search(searchQuery)
+            }
         }
     }
 

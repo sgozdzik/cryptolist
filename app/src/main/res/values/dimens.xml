@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margin_normal">16dp</dimen>
+    <dimen name="elevation">10dp</dimen>
+    <dimen name="icon_size">32dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="text_small_size">12sp</dimen>
+    <dimen name="text_normal_size">15sp</dimen>
+    <dimen name="text_big_size">17sp</dimen>
 </resources>
