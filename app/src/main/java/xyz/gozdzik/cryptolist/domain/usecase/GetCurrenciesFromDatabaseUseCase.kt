@@ -1,7 +1,7 @@
 package xyz.gozdzik.cryptolist.domain.usecase
 
 import xyz.gozdzik.cryptolist.core.UseCase
-import xyz.gozdzik.cryptolist.data.local.repository.CurrencyInfoRepository
+import xyz.gozdzik.cryptolist.domain.repository.CurrencyInfoRepository
 import xyz.gozdzik.cryptolist.domain.model.CurrencyInfo
 import javax.inject.Inject
 

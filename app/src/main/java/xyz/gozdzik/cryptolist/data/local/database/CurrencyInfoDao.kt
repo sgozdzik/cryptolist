@@ -1,4 +1,4 @@
-package xyz.gozdzik.cryptolist.data.local.repository
+package xyz.gozdzik.cryptolist.data.local.database
 
 import androidx.room.Dao
 import androidx.room.Insert

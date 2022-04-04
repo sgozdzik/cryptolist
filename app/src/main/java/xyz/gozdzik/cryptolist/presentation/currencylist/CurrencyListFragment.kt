@@ -7,18 +7,20 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
+import xyz.gozdzik.cryptolist.R
 import xyz.gozdzik.cryptolist.databinding.FragmentCurrencyListBinding
+import xyz.gozdzik.cryptolist.presentation.model.SortParameter
 
 @AndroidEntryPoint
 class CurrencyListFragment : Fragment() {
 
     private val adapter: CurrencyListAdapter by lazy {
-        CurrencyListAdapter {
-            //TODO: Show snackbar or something similar
-            TODO()
+        CurrencyListAdapter { currencyInfoItem ->
+            binding.searchToolbar.setTitle(currencyInfoItem.name)
         }
     }
     private val args: CurrencyListFragmentArgs by navArgs()
@@ -44,6 +46,18 @@ class CurrencyListFragment : Fragment() {
     private fun setupView() {
         binding.apply {
             rvCryptoList.adapter = adapter
+            searchToolbar.apply {
+                setSearchCallback { searchQuery ->
+                    viewModel.search(searchQuery)
+                }
+                leftButtonCallback {
+                    findNavController().popBackStack()
+                }
+                rightButtonCallback {
+                    viewModel.sortCurrencies(SortParameter.BY_NAME_ASC)
+                }
+                setRightButtonIcon(R.drawable.ic_sort)
+            }
         }
     }
 

@@ -6,13 +6,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <xyz.gozdzik.cryptolist.presentation.components.SearchToolbarView
+            android:id="@+id/search_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:show_back_button="true"
+            app:show_search="true"
+            app:toolbar_title="@string/app_name" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_crypto_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/margin_normal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/search_toolbar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

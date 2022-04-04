@@ -1,4 +1,4 @@
-package xyz.gozdzik.cryptolist.data.local.repository
+package xyz.gozdzik.cryptolist.domain.repository
 
 import xyz.gozdzik.cryptolist.domain.model.CurrencyInfo
 

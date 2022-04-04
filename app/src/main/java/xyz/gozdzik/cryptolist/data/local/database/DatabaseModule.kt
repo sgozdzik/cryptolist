@@ -16,7 +16,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import xyz.gozdzik.cryptolist.core.utils.JsonAssetReader
 import xyz.gozdzik.cryptolist.data.local.database.prepopulate.CurrencyInfoPrepopulateRepository
-import xyz.gozdzik.cryptolist.data.local.repository.CurrencyInfoDao
 import xyz.gozdzik.cryptolist.data.model.parsers.CurrencyInfoJsonParser
 import javax.inject.Provider
 import javax.inject.Singleton
@@ -47,7 +46,7 @@ class DatabaseModule {
                     }
                 }
             })
-            .build()
+            .build().initializeDatabaseAfterBuild()
 
     @Provides
     fun provideCurrencyInfoDao(appDatabase: AppDatabase) =
