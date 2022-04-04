@@ -1,8 +1,10 @@
 package xyz.gozdzik.cryptolist.data.local.repository
 
 import xyz.gozdzik.cryptolist.core.DataDomainMapper
+import xyz.gozdzik.cryptolist.data.local.database.CurrencyInfoDao
 import xyz.gozdzik.cryptolist.data.model.CurrencyInfoDto
 import xyz.gozdzik.cryptolist.domain.model.CurrencyInfo
+import xyz.gozdzik.cryptolist.domain.repository.CurrencyInfoRepository
 import javax.inject.Inject
 
 class CurrencyInfoLocalRepository @Inject constructor(
