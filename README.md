@@ -1,3 +1,5 @@
+![Screenshot](https://github.com/sgozdzik/cryptolist/blob/master/screenshot.jpg?raw=true)
+
 ## Comments to tasks
 
 ### CurrencyListFragment should receive an array list of CurrencyInfo to create the ui.
