@@ -1,7 +1,7 @@
-package xyz.gozdzik.cryptolist.data.model.mappers
+package xyz.gozdzik.cryptolist.data.local.model.mappers
 
 import xyz.gozdzik.cryptolist.core.DataDomainMapper
-import xyz.gozdzik.cryptolist.data.model.CurrencyInfoDto
+import xyz.gozdzik.cryptolist.data.local.model.CurrencyInfoDto
 import xyz.gozdzik.cryptolist.domain.model.CurrencyInfo
 
 class CurrencyInfoDataDomainMapper : DataDomainMapper<CurrencyInfo, CurrencyInfoDto> {

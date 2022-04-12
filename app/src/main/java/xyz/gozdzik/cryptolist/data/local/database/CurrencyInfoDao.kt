@@ -4,8 +4,8 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import xyz.gozdzik.cryptolist.data.model.CURRENCY_INFO_TABLE_NAME
-import xyz.gozdzik.cryptolist.data.model.CurrencyInfoDto
+import xyz.gozdzik.cryptolist.data.local.model.CURRENCY_INFO_TABLE_NAME
+import xyz.gozdzik.cryptolist.data.local.model.CurrencyInfoDto
 
 @Dao
 interface CurrencyInfoDao {
