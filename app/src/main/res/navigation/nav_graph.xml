@@ -8,9 +8,5 @@
         android:id="@+id/fragmentCurrencyList"
         android:name="xyz.gozdzik.cryptolist.presentation.currencylist.CurrencyListFragment"
         android:label="CurrencyListFragment"
-        tools:layout="@layout/fragment_currency_list" >
-        <argument
-            android:name="currencies"
-            app:argType="xyz.gozdzik.cryptolist.presentation.model.CurrencyInfoItem[]"/>
-    </fragment>
+        tools:layout="@layout/fragment_currency_list" />
 </navigation>

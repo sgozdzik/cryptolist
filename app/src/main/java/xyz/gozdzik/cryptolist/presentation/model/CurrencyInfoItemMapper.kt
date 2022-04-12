@@ -13,6 +13,6 @@ class CurrencyInfoItemMapper : PresentationDomainMapper<CurrencyInfo, CurrencyIn
             domain.id,
             domain.name.first().toString(),
             domain.name,
-            domain.symbol
+            domain.symbol.uppercase()
         )
 }

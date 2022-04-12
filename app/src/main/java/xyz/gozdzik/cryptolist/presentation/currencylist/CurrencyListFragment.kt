@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import xyz.gozdzik.cryptolist.R
@@ -23,7 +22,6 @@ class CurrencyListFragment : Fragment() {
             binding.searchToolbar.setTitle(currencyInfoItem.name)
         }
     }
-    private val args: CurrencyListFragmentArgs by navArgs()
     private val viewModel: CurrencyListViewModel by viewModels()
     private lateinit var binding: FragmentCurrencyListBinding
 
@@ -38,7 +36,7 @@ class CurrencyListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.initViewModel(args.currencies.toList())
+        viewModel.initViewModel()
         setupView()
         observeViewModel()
     }

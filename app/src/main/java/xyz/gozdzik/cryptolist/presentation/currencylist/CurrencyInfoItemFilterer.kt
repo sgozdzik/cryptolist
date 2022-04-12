@@ -13,11 +13,11 @@ class CurrencyInfoItemFilterer {
         SortParameter.DEFAULT -> currenciesInfoItems
         SortParameter.BY_NAME_ASC -> currenciesInfoItems
             .sortedBy { currencyInfoItem ->
-                currencyInfoItem.name
+                currencyInfoItem.name.lowercase()
             }
         SortParameter.BY_NAME_DESC -> currenciesInfoItems
             .sortedByDescending { currencyInfoItem ->
-                currencyInfoItem.id
+                currencyInfoItem.name.lowercase()
             }
     }.filter { currencyInfoItem ->
         filterParameter.searchQuery?.let { searchQuery ->
