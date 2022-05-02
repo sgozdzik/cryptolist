@@ -2,6 +2,7 @@
 <resources>
 
     <!--  Text sizes  -->
+    <dimen name="text_extra_small_size">10sp</dimen>
     <dimen name="text_small_size">12sp</dimen>
     <dimen name="text_normal_size">15sp</dimen>
     <dimen name="text_big_size">17sp</dimen>

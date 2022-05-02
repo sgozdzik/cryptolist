@@ -1,7 +1,10 @@
 package xyz.gozdzik.cryptolist.presentation.model
 
 import xyz.gozdzik.cryptolist.core.PresentationDomainMapper
+import xyz.gozdzik.cryptolist.core.utils.toPercentageValue
+import xyz.gozdzik.cryptolist.core.utils.toUsdCurrency
 import xyz.gozdzik.cryptolist.domain.model.CurrencyDetailedInfo
+import java.math.BigDecimal
 
 class CurrencyInfoItemMapper :
     PresentationDomainMapper<CurrencyDetailedInfo, CurrencyDetailedInfoItem> {
@@ -11,9 +14,11 @@ class CurrencyInfoItemMapper :
             item.id,
             item.name,
             item.symbol,
-            item.currentPrice,
-            item.priceChange24,
-            item.marketCap
+            //TODO: Think about it
+            item.currentPrice.toDouble(),
+            item.priceChange24.toDouble(),
+            //TODOL Think about this also
+            BigDecimal.ONE
         )
 
     override fun mapToPresentationItem(domain: CurrencyDetailedInfo): CurrencyDetailedInfoItem =
@@ -22,8 +27,8 @@ class CurrencyInfoItemMapper :
             domain.name.first().toString(),
             domain.name,
             domain.symbol.uppercase(),
-            domain.currentPrice,
-            domain.priceChange24,
-            domain.marketCap
+            domain.currentPrice.toUsdCurrency(),
+            domain.priceChange24.toPercentageValue(),
+            domain.marketCap.toUsdCurrency()
         )
 }
