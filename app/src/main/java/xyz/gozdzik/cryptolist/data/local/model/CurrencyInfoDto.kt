@@ -1,4 +1,4 @@
-package xyz.gozdzik.cryptolist.data.model
+package xyz.gozdzik.cryptolist.data.local.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

@@ -7,7 +7,7 @@ import dagger.hilt.components.SingletonComponent
 import xyz.gozdzik.cryptolist.data.local.database.AppDatabase
 import xyz.gozdzik.cryptolist.data.local.repository.CurrencyInfoLocalRepository
 import xyz.gozdzik.cryptolist.domain.repository.CurrencyInfoRepository
-import xyz.gozdzik.cryptolist.data.model.mappers.CurrencyInfoDataDomainMapper
+import xyz.gozdzik.cryptolist.data.local.model.mappers.CurrencyInfoDataDomainMapper
 import xyz.gozdzik.cryptolist.presentation.currencylist.CurrencyInfoItemFilterer
 import xyz.gozdzik.cryptolist.presentation.model.CurrencyInfoItemMapper
 

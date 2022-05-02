@@ -2,7 +2,7 @@ package xyz.gozdzik.cryptolist.data.local.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import xyz.gozdzik.cryptolist.data.model.CurrencyInfoDto
+import xyz.gozdzik.cryptolist.data.local.model.CurrencyInfoDto
 
 
 const val APP_DATABASE_NAME = "CurrencyDatabase"
