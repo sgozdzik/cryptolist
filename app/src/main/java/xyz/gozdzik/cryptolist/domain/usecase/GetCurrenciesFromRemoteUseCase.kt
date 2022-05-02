@@ -11,7 +11,6 @@ class GetCurrenciesFromRemoteUseCase @Inject constructor(
 
     override suspend fun getData(parameters: Parameters?): Result<List<CurrencyInfo>> =
         runCatching {
-            //TODO: Add handling pages
             currencyInfoRepository.getAll()
         }
 

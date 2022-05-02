@@ -1,4 +1,4 @@
-package xyz.gozdzik.cryptolist.di
+package xyz.gozdzik.cryptolist.data.local.di
 
 import dagger.Module
 import dagger.Provides
@@ -14,10 +14,9 @@ import xyz.gozdzik.cryptolist.domain.usecase.GetCurrenciesFromRemoteUseCase
 import xyz.gozdzik.cryptolist.presentation.currencylist.CurrencyInfoItemFilterer
 import xyz.gozdzik.cryptolist.presentation.model.CurrencyInfoItemMapper
 
-//TODO: Split this to database module
 @Module
 @InstallIn(SingletonComponent::class)
-class CurrencyInfoModule {
+class LocalModule {
 
     @Provides
     fun provideCurrencyInfoLocalRepository(
@@ -45,9 +44,4 @@ class CurrencyInfoModule {
     fun provideGetCurrenciesFromDatabaseUseCase(currencyInfoRepository: CurrencyInfoLocalRepository)
             : GetCurrenciesFromDatabaseUseCase =
         GetCurrenciesFromDatabaseUseCase(currencyInfoRepository)
-
-    @Provides
-    fun provideGetCurrenciesFromRemoteUseCase(currencyInfoRepository: CurrencyInfoRemoteRepository)
-            : GetCurrenciesFromRemoteUseCase =
-        GetCurrenciesFromRemoteUseCase(currencyInfoRepository)
 }
