@@ -1,6 +1,6 @@
 package xyz.gozdzik.cryptolist.presentation.currencylist
 
-import xyz.gozdzik.cryptolist.presentation.model.CurrencyInfoItem
+import xyz.gozdzik.cryptolist.presentation.model.CurrencyDetailedInfoItem
 import xyz.gozdzik.cryptolist.presentation.model.FilterParameters
 import xyz.gozdzik.cryptolist.presentation.model.SortParameter
 
@@ -8,8 +8,8 @@ class CurrencyInfoItemFilterer {
 
     fun applyFilterParameters(
         filterParameter: FilterParameters,
-        currenciesInfoItems: List<CurrencyInfoItem>
-    ): List<CurrencyInfoItem> = when (filterParameter.sortParameter) {
+        currenciesInfoItems: List<CurrencyDetailedInfoItem>
+    ): List<CurrencyDetailedInfoItem> = when (filterParameter.sortParameter) {
         SortParameter.DEFAULT -> currenciesInfoItems
         SortParameter.BY_NAME_ASC -> currenciesInfoItems
             .sortedBy { currencyInfoItem ->

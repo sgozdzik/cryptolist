@@ -1,11 +1,12 @@
 package xyz.gozdzik.cryptolist.presentation.currencylist
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import xyz.gozdzik.cryptolist.domain.usecase.GetCurrenciesFromRemoteUseCase
-import xyz.gozdzik.cryptolist.presentation.model.CurrencyInfoItem
+import xyz.gozdzik.cryptolist.presentation.model.CurrencyDetailedInfoItem
 import xyz.gozdzik.cryptolist.presentation.model.CurrencyInfoItemMapper
 import xyz.gozdzik.cryptolist.presentation.model.FilterParameters
 import xyz.gozdzik.cryptolist.presentation.model.SortParameter
@@ -18,9 +19,9 @@ class CurrencyListViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val currencyInfoItemMapper = CurrencyInfoItemMapper()
-    private val currenciesInfoItems = MutableStateFlow<List<CurrencyInfoItem>>(emptyList())
+    private val currenciesInfoItems = MutableStateFlow<List<CurrencyDetailedInfoItem>>(emptyList())
     private val filterParameters = MutableStateFlow(FilterParameters())
-    val currenciesInfoItemsObservable: StateFlow<List<CurrencyInfoItem>>
+    val currenciesInfoItemsObservable: StateFlow<List<CurrencyDetailedInfoItem>>
         get() = currenciesInfoItems.combine(
             filterParameters
         ) { currenciesInfoItems, filterParameter ->
@@ -36,6 +37,9 @@ class CurrencyListViewModel @Inject constructor(
                     }
                 }
             }
+                .onFailure {
+                    //TODO: Handle error
+                }
         }
     }
 

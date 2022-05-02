@@ -2,22 +2,29 @@ package xyz.gozdzik.cryptolist.data.remote.model.mappers
 
 import xyz.gozdzik.cryptolist.core.DataDomainMapper
 import xyz.gozdzik.cryptolist.data.remote.model.CurrencyInfoRemoteDto
-import xyz.gozdzik.cryptolist.domain.model.CurrencyInfo
+import xyz.gozdzik.cryptolist.domain.model.CurrencyDetailedInfo
 
-class CurrencyInfoRemoteDataDomainMapper : DataDomainMapper<CurrencyInfo, CurrencyInfoRemoteDto> {
+class CurrencyInfoRemoteDataDomainMapper : DataDomainMapper<CurrencyDetailedInfo,
+        CurrencyInfoRemoteDto> {
 
-    override fun mapToDomain(data: CurrencyInfoRemoteDto): CurrencyInfo =
-        CurrencyInfo(
+    override fun mapToDomain(data: CurrencyInfoRemoteDto): CurrencyDetailedInfo =
+        CurrencyDetailedInfo(
             data.id,
             data.name,
-            data.symbol
+            data.symbol,
+            data.currentPrice,
+            data.priceChange24,
+            data.marketCap
         )
 
-    override fun mapToData(domain: CurrencyInfo): CurrencyInfoRemoteDto =
+    override fun mapToData(domain: CurrencyDetailedInfo): CurrencyInfoRemoteDto =
         CurrencyInfoRemoteDto(
             domain.id,
             domain.name,
-            domain.symbol
+            domain.symbol,
+            domain.currentPrice,
+            domain.priceChange24,
+            domain.marketCap
         )
 
 }

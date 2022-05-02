@@ -1,7 +1,7 @@
 package xyz.gozdzik.cryptolist.presentation.currencylist
 
 import org.junit.Test
-import xyz.gozdzik.cryptolist.presentation.model.CurrencyInfoItem
+import xyz.gozdzik.cryptolist.presentation.model.CurrencyDetailedInfoItem
 import xyz.gozdzik.cryptolist.presentation.model.FilterParameters
 import xyz.gozdzik.cryptolist.presentation.model.SortParameter
 
@@ -9,11 +9,11 @@ class CurrencyInfoItemFiltererTest {
 
     private val filterer = CurrencyInfoItemFilterer()
     private val testItems = listOf(
-        CurrencyInfoItem("CRO", "C", "Crypto Coin", "CRO"),
-        CurrencyInfoItem("XRP", "X", "Xrp", "XRP"),
-        CurrencyInfoItem("ADA", "A", "Ada", "ADA"),
-        CurrencyInfoItem("ETH", "E", "Ethereum", "ETH"),
-        CurrencyInfoItem("BTC", "B", "Bitcoin", "BTC"),
+        CurrencyDetailedInfoItem("CRO", "C", "Crypto Coin", "CRO"),
+        CurrencyDetailedInfoItem("XRP", "X", "Xrp", "XRP"),
+        CurrencyDetailedInfoItem("ADA", "A", "Ada", "ADA"),
+        CurrencyDetailedInfoItem("ETH", "E", "Ethereum", "ETH"),
+        CurrencyDetailedInfoItem("BTC", "B", "Bitcoin", "BTC"),
     )
 
     @Test

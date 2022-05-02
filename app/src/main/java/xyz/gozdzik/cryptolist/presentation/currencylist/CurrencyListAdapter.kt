@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import xyz.gozdzik.cryptolist.databinding.ItemCurrencyInfoBinding
-import xyz.gozdzik.cryptolist.presentation.model.CurrencyInfoItem
+import xyz.gozdzik.cryptolist.presentation.model.CurrencyDetailedInfoItem
 
-class CurrencyListAdapter(private val clickListener: (CurrencyInfoItem) -> Unit) :
-    ListAdapter<CurrencyInfoItem, CurrencyItemViewHolder>(DiffItemCallback) {
+class CurrencyListAdapter(private val clickListener: (CurrencyDetailedInfoItem) -> Unit) :
+    ListAdapter<CurrencyDetailedInfoItem, CurrencyItemViewHolder>(DiffItemCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyItemViewHolder =
         CurrencyItemViewHolder(
@@ -25,15 +25,15 @@ class CurrencyListAdapter(private val clickListener: (CurrencyInfoItem) -> Unit)
     override fun onBindViewHolder(holder: CurrencyItemViewHolder, position: Int) =
         holder.bind(getItem(position))
 
-    object DiffItemCallback : DiffUtil.ItemCallback<CurrencyInfoItem>() {
+    object DiffItemCallback : DiffUtil.ItemCallback<CurrencyDetailedInfoItem>() {
         override fun areItemsTheSame(
-            oldItem: CurrencyInfoItem,
-            newItem: CurrencyInfoItem
+            oldItem: CurrencyDetailedInfoItem,
+            newItem: CurrencyDetailedInfoItem
         ): Boolean = oldItem.id == newItem.id
 
         override fun areContentsTheSame(
-            oldItem: CurrencyInfoItem,
-            newItem: CurrencyInfoItem
+            oldItem: CurrencyDetailedInfoItem,
+            newItem: CurrencyDetailedInfoItem
         ): Boolean = oldItem == newItem
 
     }
@@ -51,7 +51,7 @@ class CurrencyItemViewHolder(
         }
     }
 
-    fun bind(currencyInfoItem: CurrencyInfoItem) {
+    fun bind(currencyInfoItem: CurrencyDetailedInfoItem) {
         binding.item = currencyInfoItem
     }
 
