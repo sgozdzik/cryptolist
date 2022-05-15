@@ -1,5 +1,6 @@
 package xyz.gozdzik.cryptolist.domain.usecase
 
+import kotlinx.coroutines.delay
 import xyz.gozdzik.cryptolist.core.UseCase
 import xyz.gozdzik.cryptolist.domain.model.CurrencyDetailedInfo
 import xyz.gozdzik.cryptolist.domain.model.CurrencyInfo

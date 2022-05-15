@@ -6,4 +6,4 @@ fun BigDecimal.toUsdCurrency() = "$this USD"
 
 fun Double.toUsdCurrency() = "$this USD"
 
-fun Double.toPercentageValue() = "$this%"
+fun Double.toPercentageValue() = "${String.format("%.2f", this)}%"

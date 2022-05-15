@@ -22,7 +22,7 @@ class CurrencyListFragment : Fragment() {
             binding.searchToolbar.setTitle(currencyInfoItem.name)
         }
     }
-    private val viewModel: CurrencyListViewModel by viewModels()
+    private val currencyListViewModel: CurrencyListViewModel by viewModels()
     private lateinit var binding: FragmentCurrencyListBinding
 
     override fun onCreateView(
@@ -36,32 +36,35 @@ class CurrencyListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.initViewModel()
+        currencyListViewModel.fetchCurrencies()
         setupView()
         observeViewModel()
     }
 
     private fun setupView() {
         binding.apply {
+            viewModel = currencyListViewModel
+            lifecycleOwner = this@CurrencyListFragment
             rvCryptoList.adapter = adapter
             searchToolbar.apply {
                 setSearchCallback { searchQuery ->
-                    viewModel.search(searchQuery)
-                }
-                leftButtonCallback {
-                    findNavController().popBackStack()
+                    currencyListViewModel.search(searchQuery)
                 }
                 rightButtonCallback {
-                    viewModel.sortCurrencies(SortParameter.BY_NAME_ASC)
+                    currencyListViewModel.sortCurrencies(SortParameter.BY_NAME_ASC)
                 }
                 setRightButtonIcon(R.drawable.ic_sort)
+            }
+            srRefresh.setOnRefreshListener {
+                srRefresh.isRefreshing = false
+                currencyListViewModel.fetchCurrencies()
             }
         }
     }
 
     private fun observeViewModel() {
         lifecycleScope.launchWhenResumed {
-            viewModel.currenciesInfoItemsObservable
+            currencyListViewModel.currenciesInfoItemsObservable
                 .collect { currenciesInfoItems ->
                     adapter.submitList(currenciesInfoItems)
                 }

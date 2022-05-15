@@ -26,9 +26,12 @@ class CurrencyListViewModel @Inject constructor(
         ) { currenciesInfoItems, filterParameter ->
             currencyInfoItemFilterer.applyFilterParameters(filterParameter, currenciesInfoItems)
         }.stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
+    val isLoading: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
-    fun initViewModel() {
+    fun fetchCurrencies() {
+        isLoading.update { true }
         getCurrenciesFromRemoteUseCase.launch { result ->
+            isLoading.update { false }
             result.onSuccess { list ->
                 currenciesInfoItems.update {
                     list.map {

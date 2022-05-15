@@ -10,16 +10,7 @@ class CurrencyInfoItemMapper :
     PresentationDomainMapper<CurrencyDetailedInfo, CurrencyDetailedInfoItem> {
 
     override fun mapToDomain(item: CurrencyDetailedInfoItem): CurrencyDetailedInfo =
-        CurrencyDetailedInfo(
-            item.id,
-            item.name,
-            item.symbol,
-            //TODO: Think about it
-            item.currentPrice.toDouble(),
-            item.priceChange24.toDouble(),
-            //TODOL Think about this also
-            BigDecimal.ONE
-        )
+        throw Exception("Not supported yet")
 
     override fun mapToPresentationItem(domain: CurrencyDetailedInfo): CurrencyDetailedInfoItem =
         CurrencyDetailedInfoItem(
