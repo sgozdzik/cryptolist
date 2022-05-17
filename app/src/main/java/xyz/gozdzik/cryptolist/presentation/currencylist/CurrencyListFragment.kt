@@ -55,8 +55,13 @@ class CurrencyListFragment : Fragment() {
                     currencyListViewModel.sortCurrencies(SortParameter.BY_NAME_ASC)
                 }
                 setRightButtonIcon(R.drawable.ic_sort)
-                setMenuButtons(listOf(CurrencyListMenuItem.SORT, CurrencyListMenuItem.SORT)) {
-                    //TODO: Handle click
+                //TODO: Create menu in ViewModel
+                setMenuButtons(listOf(CurrencyListMenuItem.SORT)) {
+                    when (it) {
+                        CurrencyListMenuItem.SORT -> findNavController().navigate(
+                            CurrencyListFragmentDirections.navigateToSortBottomSheett()
+                        )
+                    }
                 }
             }
             srRefresh.setOnRefreshListener {

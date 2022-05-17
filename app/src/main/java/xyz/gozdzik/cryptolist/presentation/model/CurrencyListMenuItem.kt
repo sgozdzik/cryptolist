@@ -10,7 +10,7 @@ enum class CurrencyListMenuItem(
     @DrawableRes val icon: Int
 ) : SearchToolbarMenuItem<CurrencyListMenuItem> {
     SORT(
-        R.string.search, R.drawable.ic_sort
+        R.string.sort, R.drawable.ic_sort
     );
 
     override val displayNameResId: Int

@@ -1,0 +1,5 @@
+package xyz.gozdzik.cryptolist.presentation.currencylist
+
+import xyz.gozdzik.cryptolist.presentation.components.bottomsheets.singlechoice.SingleChoiceBottomSheetFragment
+
+class SortBottomSheetFragment : SingleChoiceBottomSheetFragment()
