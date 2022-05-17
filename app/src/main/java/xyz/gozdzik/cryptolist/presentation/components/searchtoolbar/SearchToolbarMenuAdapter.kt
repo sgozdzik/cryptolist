@@ -33,7 +33,7 @@ class SearchToolbarMenuAdapter<T : Enum<T>>(private val clickListener: (T: Enum<
         override fun areContentsTheSame(
             oldItem: SearchToolbarMenuItem<T>,
             newItem: SearchToolbarMenuItem<T>
-        ): Boolean = oldItem == newItem
+        ): Boolean = oldItem.enum == newItem.enum
     }
 
 }
