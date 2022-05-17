@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <xyz.gozdzik.cryptolist.presentation.components.SearchToolbarView
+        <xyz.gozdzik.cryptolist.presentation.components.searchtoolbar.SearchToolbarView
             android:id="@+id/search_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

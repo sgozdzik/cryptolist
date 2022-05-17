@@ -12,6 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import xyz.gozdzik.cryptolist.R
 import xyz.gozdzik.cryptolist.databinding.FragmentCurrencyListBinding
+import xyz.gozdzik.cryptolist.presentation.model.CurrencyListMenuItem
 import xyz.gozdzik.cryptolist.presentation.model.SortParameter
 
 @AndroidEntryPoint
@@ -54,6 +55,9 @@ class CurrencyListFragment : Fragment() {
                     currencyListViewModel.sortCurrencies(SortParameter.BY_NAME_ASC)
                 }
                 setRightButtonIcon(R.drawable.ic_sort)
+                setMenuButtons(listOf(CurrencyListMenuItem.SORT, CurrencyListMenuItem.SORT)) {
+                    //TODO: Handle click
+                }
             }
             srRefresh.setOnRefreshListener {
                 srRefresh.isRefreshing = false
