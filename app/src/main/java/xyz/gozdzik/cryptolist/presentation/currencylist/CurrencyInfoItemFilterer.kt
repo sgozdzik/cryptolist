@@ -19,6 +19,10 @@ class CurrencyInfoItemFilterer {
             .sortedByDescending { currencyInfoItem ->
                 currencyInfoItem.name.lowercase()
             }
+        SortParameter.BY_MARKET_CAP -> currenciesInfoItems
+            .sortedByDescending { currencyInfoItem ->
+                currencyInfoItem.marketCap
+            }
     }.filter { currencyInfoItem ->
         filterParameter.searchQuery?.let { searchQuery ->
             currencyInfoItem.name.lowercase().contains(searchQuery.lowercase())

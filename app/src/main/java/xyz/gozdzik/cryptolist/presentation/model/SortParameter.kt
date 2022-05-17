@@ -8,5 +8,6 @@ data class FilterParameters(
 enum class SortParameter {
     DEFAULT,
     BY_NAME_ASC,
-    BY_NAME_DESC
+    BY_NAME_DESC,
+    BY_MARKET_CAP
 }

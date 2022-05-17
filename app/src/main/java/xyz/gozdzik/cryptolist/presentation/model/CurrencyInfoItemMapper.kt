@@ -20,6 +20,6 @@ class CurrencyInfoItemMapper :
             domain.symbol.uppercase(),
             domain.currentPrice.toUsdCurrency(),
             domain.priceChange24.toPercentageValue(),
-            domain.marketCap.toUsdCurrency()
+            domain.marketCap
         )
 }

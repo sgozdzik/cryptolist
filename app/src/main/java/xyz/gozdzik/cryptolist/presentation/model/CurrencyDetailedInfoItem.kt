@@ -10,7 +10,7 @@ data class CurrencyDetailedInfoItem(
     val initialLetter: String,
     val name: String,
     val symbol: String,
-    val currentPrice: String,
-    val priceChange24: String,
-    val marketCap: String
+    val currentPrice: String = "0.00",
+    val priceChange24: String = "0.00%",
+    val marketCap: BigDecimal = BigDecimal.ZERO
 ) : Parcelable
