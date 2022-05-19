@@ -10,7 +10,6 @@ class CurrencyInfoItemFilterer {
         filterParameter: FilterParameters,
         currenciesInfoItems: List<CurrencyDetailedInfoItem>
     ): List<CurrencyDetailedInfoItem> = when (filterParameter.sortParameter) {
-        SortParameter.DEFAULT -> currenciesInfoItems
         SortParameter.BY_NAME_ASC -> currenciesInfoItems
             .sortedBy { currencyInfoItem ->
                 currencyInfoItem.name.lowercase()

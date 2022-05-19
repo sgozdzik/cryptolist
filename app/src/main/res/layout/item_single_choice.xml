@@ -17,17 +17,14 @@
         android:layout_marginHorizontal="@dimen/margin_small"
         android:padding="@dimen/margin_small">
 
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
+        <RadioButton
+            android:id="@+id/rb_choice"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_small"
             android:text="@{item.displayNameResId}"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_normal_size"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Bitcoin" />
+            tools:text="Test single choice"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

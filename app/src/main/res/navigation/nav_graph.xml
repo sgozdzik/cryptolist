@@ -16,7 +16,7 @@
 
     <dialog
         android:id="@+id/sortBottomSheet"
-        android:name="xyz.gozdzik.cryptolist.presentation.currencylist.SortBottomSheetFragment"
+        android:name="xyz.gozdzik.cryptolist.presentation.currencylist.parameters.SortBottomSheetFragment"
         android:label="SortBottomSheet"
         tools:layout="@layout/fragment_single_choice_bottom_sheet" />
 </navigation>
