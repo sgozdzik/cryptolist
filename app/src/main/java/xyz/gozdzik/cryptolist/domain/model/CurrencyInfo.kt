@@ -1,6 +1,6 @@
 package xyz.gozdzik.cryptolist.domain.model
 
-data class CurrencyInfo(
+open class CurrencyInfo(
     val id: String,
     val name: String,
     val symbol: String

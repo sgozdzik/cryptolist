@@ -1,10 +1,11 @@
-package xyz.gozdzik.cryptolist.presentation.components
+package xyz.gozdzik.cryptolist.presentation.components.searchtoolbar
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.LinearLayoutManager
 import xyz.gozdzik.cryptolist.R
 import xyz.gozdzik.cryptolist.core.utils.addOnTextChangedListener
 import xyz.gozdzik.cryptolist.databinding.ViewSearchToolbarBinding
@@ -78,6 +79,24 @@ class SearchToolbarView : ConstraintLayout {
 
     fun setRightButtonIcon(iconResId: Int) {
         binding.rightButton.setImageResource(iconResId)
+    }
+
+    fun <T : Enum<T>> setMenuButtons(
+        menuButtons: List<SearchToolbarMenuItem<T>>,
+        clickListener: (Enum<T>) -> Unit
+    ) {
+        binding.rvMenuList.apply {
+            layoutManager = LinearLayoutManager(
+                context,
+                LinearLayoutManager.HORIZONTAL,
+                false
+            )
+            adapter = SearchToolbarMenuAdapter<T> {
+                clickListener.invoke(it)
+            }.apply {
+                submitList(menuButtons)
+            }
+        }
     }
 
 }

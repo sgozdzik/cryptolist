@@ -2,4 +2,10 @@
     <string name="app_name">CryptoList</string>
     <string name="demo_fetch_data">Fetch data</string>
     <string name="search">Search</string>
+    <string name="sort">Sort</string>
+    <string name="done">Done</string>
+    <string name="sort_by_asc">Sort Alphabetically Ascending</string>
+    <string name="sort_by_desc">Sort Alphabetically Descending</string>
+    <string name="sort_by_market_cap">Sort by MarketCap</string>
+
 </resources>

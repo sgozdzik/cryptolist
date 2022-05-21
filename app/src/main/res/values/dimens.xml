@@ -2,6 +2,7 @@
 <resources>
 
     <!--  Text sizes  -->
+    <dimen name="text_extra_small_size">10sp</dimen>
     <dimen name="text_small_size">12sp</dimen>
     <dimen name="text_normal_size">15sp</dimen>
     <dimen name="text_big_size">17sp</dimen>
@@ -14,6 +15,7 @@
     <dimen name="icon_size">32dp</dimen>
     <dimen name="small_icon_size">20dp</dimen>
     <dimen name="icon_click_area">60dp</dimen>
+    <dimen name="extra_small_icon_size">16dp</dimen>
 
     <!--  Margin sizes  -->
     <dimen name="margin_small">8dp</dimen>

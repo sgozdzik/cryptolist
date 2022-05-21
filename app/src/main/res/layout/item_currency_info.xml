@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="xyz.gozdzik.cryptolist.presentation.model.CurrencyInfoItem" />
+            type="xyz.gozdzik.cryptolist.presentation.model.CurrencyDetailedInfoItem" />
 
     </data>
 
@@ -24,10 +24,10 @@
             android:id="@+id/tv_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{item.initialLetter}"
             android:background="@drawable/round_background"
             android:backgroundTint="@color/white_alpha_50"
             android:padding="@dimen/margin_normal"
+            android:text="@{item.initialLetter}"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="@dimen/text_big_size"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -52,21 +52,57 @@
             android:id="@+id/tv_symbol"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_small"
             android:text="@{item.symbol}"
             android:textColor="@color/white_alpha_50"
             android:textSize="@dimen/text_small_size"
             app:layout_constraintBottom_toBottomOf="@+id/tv_name"
             app:layout_constraintStart_toEndOf="@+id/tv_name"
-            android:layout_marginStart="@dimen/margin_small"
             app:layout_constraintTop_toTopOf="@+id/tv_name"
             tools:text="BTC" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fl_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_name"
+            app:layout_constraintEnd_toStartOf="@+id/iv_arrow"
+            app:layout_constraintTop_toTopOf="@+id/tv_name">
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:text="@{item.currentPrice}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_small_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="43212.12 USD" />
+
+            <TextView
+                android:id="@+id/tv_price_change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:text="@{item.priceChange24}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_extra_small_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_price"
+                tools:text="-25.12%" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
         <ImageView
             android:id="@+id/iv_arrow"
             android:layout_width="@dimen/icon_size"
             android:layout_height="@dimen/icon_size"
-            android:src="@drawable/ic_arrow"
             android:scaleType="centerInside"
+            android:src="@drawable/ic_arrow"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

@@ -5,10 +5,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import xyz.gozdzik.cryptolist.domain.usecase.GetCurrenciesFromRemoteUseCase
-import xyz.gozdzik.cryptolist.presentation.model.CurrencyInfoItem
-import xyz.gozdzik.cryptolist.presentation.model.CurrencyInfoItemMapper
-import xyz.gozdzik.cryptolist.presentation.model.FilterParameters
-import xyz.gozdzik.cryptolist.presentation.model.SortParameter
+import xyz.gozdzik.cryptolist.presentation.model.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -18,17 +15,21 @@ class CurrencyListViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val currencyInfoItemMapper = CurrencyInfoItemMapper()
-    private val currenciesInfoItems = MutableStateFlow<List<CurrencyInfoItem>>(emptyList())
+    private val currenciesInfoItems = MutableStateFlow<List<CurrencyDetailedInfoItem>>(emptyList())
     private val filterParameters = MutableStateFlow(FilterParameters())
-    val currenciesInfoItemsObservable: StateFlow<List<CurrencyInfoItem>>
+    val currenciesInfoItemsObservable: StateFlow<List<CurrencyDetailedInfoItem>>
         get() = currenciesInfoItems.combine(
             filterParameters
         ) { currenciesInfoItems, filterParameter ->
             currencyInfoItemFilterer.applyFilterParameters(filterParameter, currenciesInfoItems)
         }.stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
+    val isLoading: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    var sortParameter: SortParameter = SortParameter.BY_MARKET_CAP
 
-    fun initViewModel() {
+    fun fetchCurrencies() {
+        isLoading.update { true }
         getCurrenciesFromRemoteUseCase.launch { result ->
+            isLoading.update { false }
             result.onSuccess { list ->
                 currenciesInfoItems.update {
                     list.map {
@@ -36,10 +37,14 @@ class CurrencyListViewModel @Inject constructor(
                     }
                 }
             }
+                .onFailure {
+                    //TODO: Handle error
+                }
         }
     }
 
     fun sortCurrencies(sortParameter: SortParameter) {
+        this.sortParameter = sortParameter
         filterParameters.update {
             filterParameters.value.copy(sortParameter = sortParameter)
         }

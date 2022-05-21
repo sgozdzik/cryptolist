@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -12,6 +13,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import xyz.gozdzik.cryptolist.R
 import xyz.gozdzik.cryptolist.databinding.FragmentCurrencyListBinding
+import xyz.gozdzik.cryptolist.presentation.currencylist.parameters.SortBottomSheetFragment
+import xyz.gozdzik.cryptolist.presentation.model.CurrencyListMenuItem
 import xyz.gozdzik.cryptolist.presentation.model.SortParameter
 
 @AndroidEntryPoint
@@ -22,7 +25,7 @@ class CurrencyListFragment : Fragment() {
             binding.searchToolbar.setTitle(currencyInfoItem.name)
         }
     }
-    private val viewModel: CurrencyListViewModel by viewModels()
+    private val currencyListViewModel: CurrencyListViewModel by viewModels()
     private lateinit var binding: FragmentCurrencyListBinding
 
     override fun onCreateView(
@@ -36,34 +39,51 @@ class CurrencyListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.initViewModel()
+        currencyListViewModel.fetchCurrencies()
         setupView()
         observeViewModel()
     }
 
     private fun setupView() {
         binding.apply {
+            viewModel = currencyListViewModel
+            lifecycleOwner = this@CurrencyListFragment
             rvCryptoList.adapter = adapter
             searchToolbar.apply {
                 setSearchCallback { searchQuery ->
-                    viewModel.search(searchQuery)
+                    currencyListViewModel.search(searchQuery)
                 }
-                leftButtonCallback {
-                    findNavController().popBackStack()
+                setMenuButtons(listOf(CurrencyListMenuItem.SORT)) {
+                    when (it) {
+                        CurrencyListMenuItem.SORT -> {
+                            setFragmentResultListener(SortBottomSheetFragment.REQUEST_KEY) { _, bundle ->
+                                (bundle.get(SortBottomSheetFragment.CHOICE) as? SortParameter)?.let { sortParameter ->
+                                    currencyListViewModel.sortCurrencies(sortParameter)
+                                }
+                            }
+                            findNavController().navigate(
+                                CurrencyListFragmentDirections.navigateToSortBottomSheett(
+                                    currencyListViewModel.sortParameter
+                                )
+                            )
+                        }
+                    }
                 }
-                rightButtonCallback {
-                    viewModel.sortCurrencies(SortParameter.BY_NAME_ASC)
-                }
-                setRightButtonIcon(R.drawable.ic_sort)
+            }
+            srRefresh.setOnRefreshListener {
+                srRefresh.isRefreshing = false
+                currencyListViewModel.fetchCurrencies()
             }
         }
     }
 
     private fun observeViewModel() {
         lifecycleScope.launchWhenResumed {
-            viewModel.currenciesInfoItemsObservable
+            currencyListViewModel.currenciesInfoItemsObservable
                 .collect { currenciesInfoItems ->
-                    adapter.submitList(currenciesInfoItems)
+                    adapter.submitList(currenciesInfoItems) {
+                        binding.rvCryptoList.scrollToPosition(0)
+                    }
                 }
         }
     }
