@@ -27,6 +27,7 @@ class CurrencyListViewModel @Inject constructor(
             currencyInfoItemFilterer.applyFilterParameters(filterParameter, currenciesInfoItems)
         }.stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
     val isLoading: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    var sortParameter: SortParameter = SortParameter.BY_MARKET_CAP
 
     fun fetchCurrencies() {
         isLoading.update { true }
@@ -46,6 +47,7 @@ class CurrencyListViewModel @Inject constructor(
     }
 
     fun sortCurrencies(sortParameter: SortParameter) {
+        this.sortParameter = sortParameter
         filterParameters.update {
             filterParameters.value.copy(sortParameter = sortParameter)
         }

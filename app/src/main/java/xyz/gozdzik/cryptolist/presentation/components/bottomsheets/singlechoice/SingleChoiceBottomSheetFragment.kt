@@ -13,8 +13,9 @@ abstract class SingleChoiceBottomSheetFragment<T : Enum<T>> : BottomSheetDialogF
     private lateinit var binding: FragmentSingleChoiceBottomSheetBinding
     private val choiceAdapter by lazy { ChoiceAdapter<T>() }
 
+    abstract fun getPreselectedItem(): SingleChoiceItem<T>?
     abstract fun getChoiceItems(): List<SingleChoiceItem<T>>
-    abstract fun setNavigationResult()
+    abstract fun setNavigationResult(choice: SingleChoiceItem<T>)
     abstract fun getTitle(): String
 
     override fun onCreateView(
@@ -36,13 +37,13 @@ abstract class SingleChoiceBottomSheetFragment<T : Enum<T>> : BottomSheetDialogF
             layoutManager = LinearLayoutManager(context)
             adapter = choiceAdapter
         }
-        choiceAdapter.submitList(getChoiceItems())
+        choiceAdapter.setChoiceItems(getChoiceItems(), getPreselectedItem())
         binding.bottomSheetTitle.text = getTitle()
         binding.closeButton.setOnClickListener {
             dismiss()
         }
         binding.sbvDone.setOnClickListener {
-            setNavigationResult()
+            setNavigationResult(choiceAdapter.choice)
             dismiss()
         }
     }

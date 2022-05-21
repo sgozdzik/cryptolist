@@ -8,7 +8,7 @@
         android:id="@+id/fragmentCurrencyList"
         android:name="xyz.gozdzik.cryptolist.presentation.currencylist.CurrencyListFragment"
         android:label="CurrencyListFragment"
-        tools:layout="@layout/fragment_currency_list" >
+        tools:layout="@layout/fragment_currency_list">
         <action
             android:id="@+id/navigateToSortBottomSheett"
             app:destination="@id/sortBottomSheet" />
@@ -18,5 +18,9 @@
         android:id="@+id/sortBottomSheet"
         android:name="xyz.gozdzik.cryptolist.presentation.currencylist.parameters.SortBottomSheetFragment"
         android:label="SortBottomSheet"
-        tools:layout="@layout/fragment_single_choice_bottom_sheet" />
+        tools:layout="@layout/fragment_single_choice_bottom_sheet">
+        <argument
+            android:name="preselectedChoiceItem"
+            app:argType="xyz.gozdzik.cryptolist.presentation.model.SortParameter" />
+    </dialog>
 </navigation>

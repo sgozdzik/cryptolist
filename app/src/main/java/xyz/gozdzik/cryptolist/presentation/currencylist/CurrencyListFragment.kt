@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -12,6 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import xyz.gozdzik.cryptolist.R
 import xyz.gozdzik.cryptolist.databinding.FragmentCurrencyListBinding
+import xyz.gozdzik.cryptolist.presentation.currencylist.parameters.SortBottomSheetFragment
 import xyz.gozdzik.cryptolist.presentation.model.CurrencyListMenuItem
 import xyz.gozdzik.cryptolist.presentation.model.SortParameter
 
@@ -51,16 +53,23 @@ class CurrencyListFragment : Fragment() {
                 setSearchCallback { searchQuery ->
                     currencyListViewModel.search(searchQuery)
                 }
-                rightButtonCallback {
-                    currencyListViewModel.sortCurrencies(SortParameter.BY_NAME_ASC)
-                }
                 setRightButtonIcon(R.drawable.ic_sort)
                 //TODO: Create menu in ViewModel
                 setMenuButtons(listOf(CurrencyListMenuItem.SORT)) {
                     when (it) {
-                        CurrencyListMenuItem.SORT -> findNavController().navigate(
-                            CurrencyListFragmentDirections.navigateToSortBottomSheett()
-                        )
+                        CurrencyListMenuItem.SORT -> {
+                            setFragmentResultListener(SortBottomSheetFragment.REQUEST_KEY) { _, bundle ->
+                                (bundle.get(SortBottomSheetFragment.CHOICE) as? SortParameter)?.let { sortParameter ->
+                                    currencyListViewModel.sortCurrencies(sortParameter)
+                                }
+                                // read from the bundle
+                            }
+                            findNavController().navigate(
+                                CurrencyListFragmentDirections.navigateToSortBottomSheett(
+                                    currencyListViewModel.sortParameter
+                                )
+                            )
+                        }
                     }
                 }
             }
