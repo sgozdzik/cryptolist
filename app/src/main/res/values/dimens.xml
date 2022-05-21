@@ -14,8 +14,8 @@
     <!--  Icon sizes  -->
     <dimen name="icon_size">32dp</dimen>
     <dimen name="small_icon_size">20dp</dimen>
-    <dimen name="extra_small_icon_size">16dp</dimen>
     <dimen name="icon_click_area">60dp</dimen>
+    <dimen name="extra_small_icon_size">16dp</dimen>
 
     <!--  Margin sizes  -->
     <dimen name="margin_small">8dp</dimen>

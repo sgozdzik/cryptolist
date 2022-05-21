@@ -53,8 +53,6 @@ class CurrencyListFragment : Fragment() {
                 setSearchCallback { searchQuery ->
                     currencyListViewModel.search(searchQuery)
                 }
-                setRightButtonIcon(R.drawable.ic_sort)
-                //TODO: Create menu in ViewModel
                 setMenuButtons(listOf(CurrencyListMenuItem.SORT)) {
                     when (it) {
                         CurrencyListMenuItem.SORT -> {
@@ -62,7 +60,6 @@ class CurrencyListFragment : Fragment() {
                                 (bundle.get(SortBottomSheetFragment.CHOICE) as? SortParameter)?.let { sortParameter ->
                                     currencyListViewModel.sortCurrencies(sortParameter)
                                 }
-                                // read from the bundle
                             }
                             findNavController().navigate(
                                 CurrencyListFragmentDirections.navigateToSortBottomSheett(
@@ -84,7 +81,9 @@ class CurrencyListFragment : Fragment() {
         lifecycleScope.launchWhenResumed {
             currencyListViewModel.currenciesInfoItemsObservable
                 .collect { currenciesInfoItems ->
-                    adapter.submitList(currenciesInfoItems)
+                    adapter.submitList(currenciesInfoItems) {
+                        binding.rvCryptoList.scrollToPosition(0)
+                    }
                 }
         }
     }

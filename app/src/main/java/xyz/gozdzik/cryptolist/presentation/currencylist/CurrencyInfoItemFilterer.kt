@@ -25,6 +25,7 @@ class CurrencyInfoItemFilterer {
     }.filter { currencyInfoItem ->
         filterParameter.searchQuery?.let { searchQuery ->
             currencyInfoItem.name.lowercase().contains(searchQuery.lowercase())
+                    || currencyInfoItem.symbol.lowercase().contains(searchQuery.lowercase())
         } ?: true
     }
 

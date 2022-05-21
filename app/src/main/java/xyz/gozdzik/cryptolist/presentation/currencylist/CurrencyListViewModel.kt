@@ -5,10 +5,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import xyz.gozdzik.cryptolist.domain.usecase.GetCurrenciesFromRemoteUseCase
-import xyz.gozdzik.cryptolist.presentation.model.CurrencyDetailedInfoItem
-import xyz.gozdzik.cryptolist.presentation.model.CurrencyInfoItemMapper
-import xyz.gozdzik.cryptolist.presentation.model.FilterParameters
-import xyz.gozdzik.cryptolist.presentation.model.SortParameter
+import xyz.gozdzik.cryptolist.presentation.model.*
 import javax.inject.Inject
 
 @HiltViewModel

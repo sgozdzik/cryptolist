@@ -22,8 +22,8 @@
 
         <ImageView
             android:id="@+id/close_button"
-            android:layout_width="@dimen/small_icon_size"
-            android:layout_height="@dimen/small_icon_size"
+            android:layout_width="@dimen/extra_small_icon_size"
+            android:layout_height="@dimen/extra_small_icon_size"
             android:layout_marginEnd="@dimen/margin_big"
             app:layout_constraintBottom_toBottomOf="@id/bottomSheetTitle"
             app:layout_constraintEnd_toEndOf="parent"
