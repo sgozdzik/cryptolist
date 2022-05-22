@@ -12,5 +12,9 @@
         <attr name="buttonColor" format="color"/>
     </declare-styleable>
 
+    <declare-styleable name="LoadingView">
+        <attr name="animationRawRes" format="reference" />
+    </declare-styleable>
+
 
 </resources>
