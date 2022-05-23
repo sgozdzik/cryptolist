@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <xyz.gozdzik.cryptolist.presentation.components.searchtoolbar.SearchToolbarView
+        <xyz.gozdzik.serfadesign.searchtoolbar.SearchToolbarView
             android:id="@+id/search_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-        <xyz.gozdzik.cryptolist.presentation.components.LoadingView
+        <xyz.gozdzik.serfadesign.common.LoadingView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:visibility="@{viewModel.isLoading().booleanValue() ? View.VISIBLE :View.INVISIBLE}"

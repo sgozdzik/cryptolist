@@ -3,7 +3,7 @@ package xyz.gozdzik.cryptolist.presentation.model
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import xyz.gozdzik.cryptolist.R
-import xyz.gozdzik.cryptolist.presentation.components.searchtoolbar.SearchToolbarMenuItem
+import xyz.gozdzik.serfadesign.searchtoolbar.SearchToolbarMenuItem
 
 enum class CurrencyListMenuItem(
     @StringRes val displayName: Int,

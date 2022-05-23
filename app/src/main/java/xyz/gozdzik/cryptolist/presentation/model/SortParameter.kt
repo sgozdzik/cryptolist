@@ -2,7 +2,7 @@ package xyz.gozdzik.cryptolist.presentation.model
 
 import androidx.annotation.StringRes
 import xyz.gozdzik.cryptolist.R
-import xyz.gozdzik.cryptolist.presentation.components.bottomsheets.singlechoice.SingleChoiceItem
+import xyz.gozdzik.serfadesign.bottomsheets.SingleChoiceItem
 
 data class FilterParameters(
     val searchQuery: String? = null,
