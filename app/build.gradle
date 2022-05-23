@@ -47,6 +47,8 @@ dependencies {
     def retrofit_version = "2.9.0"
     def lottie_version = "5.0.3"
 
+    implementation 'com.github.sgozdzik:serfadesign:0.1.0.1'
+
     implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"
 

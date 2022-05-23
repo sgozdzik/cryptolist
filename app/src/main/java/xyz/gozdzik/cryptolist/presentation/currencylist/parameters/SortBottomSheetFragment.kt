@@ -4,9 +4,9 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.navArgs
 import xyz.gozdzik.cryptolist.R
-import xyz.gozdzik.cryptolist.presentation.components.bottomsheets.singlechoice.SingleChoiceBottomSheetFragment
-import xyz.gozdzik.cryptolist.presentation.components.bottomsheets.singlechoice.SingleChoiceItem
 import xyz.gozdzik.cryptolist.presentation.model.SortParameter
+import xyz.gozdzik.serfadesign.bottomsheets.SingleChoiceBottomSheetFragment
+import xyz.gozdzik.serfadesign.bottomsheets.SingleChoiceItem
 
 class SortBottomSheetFragment : SingleChoiceBottomSheetFragment<SortParameter>() {
 
