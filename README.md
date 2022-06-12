@@ -6,7 +6,7 @@
 This app was made to show programming skills and knowledge in Android development & Clean Architecture pattern. It's very small and compact.
 
 ## Functionality
-- displaying crypto list from CoinGecko API
+- displaying crypto list from CoinGecko API along with price and price change in last 24h
 - searching by user input
 - sorting by market cap or alphabetically
 
@@ -15,9 +15,10 @@ Most of UI components which are used in application are part of my other project
 
 [**Serfa Design Repository**](https://github.com/sgozdzik/serfadesign) 
 
-## Used technologies and libraries
+## Used technologies, patterns and libraries
 - Retrofit
 - Coroutines
+- Kotlin Flow
 - Clean Architecture
 - Room database
 - Navigation Graph
@@ -36,4 +37,3 @@ One of the goals is to add user possibility to save favorites cryptos and displa
 
 ### Crypto details
 User should be able to enter crypto details screen after clicking on it on the list. In that screen app should display some additional details like for example charts.
-
