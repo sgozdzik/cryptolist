@@ -13,14 +13,15 @@ class CurrencyInfoLocalRepository @Inject constructor(
 ) : CurrencyInfoRepository {
 
     override suspend fun insertAll(currencies: List<CurrencyInfo>) =
-        currencyInfoDao.insertAll(currencies.map {
-            mapper.mapToData(it)
-        })
+        currencyInfoDao.insertAll(
+            currencies.map {
+                mapper.mapToData(it)
+            }
+        )
 
     override suspend fun getAll(): List<CurrencyInfo> =
         currencyInfoDao.getAll()
             .map {
                 mapper.mapToDomain(it)
             }
-
 }

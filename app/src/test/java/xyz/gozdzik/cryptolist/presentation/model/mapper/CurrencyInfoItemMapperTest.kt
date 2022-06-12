@@ -1,6 +1,5 @@
 package xyz.gozdzik.cryptolist.presentation.model.mapper
 
-import junit.framework.TestCase
 import org.junit.Assert
 import org.junit.Test
 import xyz.gozdzik.cryptolist.domain.model.CurrencyDetailedInfo

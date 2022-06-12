@@ -9,10 +9,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import xyz.gozdzik.cryptolist.BuildConfig
-import xyz.gozdzik.cryptolist.data.remote.model.mappers.CurrencyInfoRemoteDataDomainMapper
-import xyz.gozdzik.cryptolist.data.remote.repository.CurrencyInfoRemoteRepository
 import xyz.gozdzik.cryptolist.data.remote.service.CoinGeckoService
-import xyz.gozdzik.cryptolist.domain.usecase.GetCurrenciesFromRemoteUseCase
 import javax.inject.Singleton
 
 private const val BASE_URL = "https://api.coingecko.com/api/v3/"
@@ -46,5 +43,4 @@ object RemoteModule {
     @Provides
     @Singleton
     fun provideCoinGeckoService(retrofit: Retrofit) = retrofit.create(CoinGeckoService::class.java)
-
 }

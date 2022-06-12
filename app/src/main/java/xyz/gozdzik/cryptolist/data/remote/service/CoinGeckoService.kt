@@ -11,5 +11,4 @@ interface CoinGeckoService {
     suspend fun getAllCoins(
         @Query("page") page: Int
     ): Response<List<CurrencyInfoRemoteDto>>
-
 }

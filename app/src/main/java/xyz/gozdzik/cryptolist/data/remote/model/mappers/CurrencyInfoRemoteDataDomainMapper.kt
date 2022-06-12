@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class CurrencyInfoRemoteDataDomainMapper @Inject constructor() :
     DataDomainMapper<CurrencyDetailedInfo,
-            CurrencyInfoRemoteDto> {
+        CurrencyInfoRemoteDto> {
 
     override fun mapToDomain(data: CurrencyInfoRemoteDto): CurrencyDetailedInfo =
         CurrencyDetailedInfo(
@@ -28,5 +28,4 @@ class CurrencyInfoRemoteDataDomainMapper @Inject constructor() :
             domain.priceChange24,
             domain.marketCap
         )
-
 }

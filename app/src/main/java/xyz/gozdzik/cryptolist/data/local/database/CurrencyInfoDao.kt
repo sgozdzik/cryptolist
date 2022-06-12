@@ -15,5 +15,4 @@ interface CurrencyInfoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(currencies: List<CurrencyInfoDatabaseDto>)
-
 }

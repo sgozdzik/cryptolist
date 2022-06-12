@@ -2,20 +2,22 @@ package xyz.gozdzik.cryptolist.core.utils
 
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
 import android.widget.EditText
-import androidx.databinding.BindingAdapter
 
 fun EditText.addOnTextChangedListener(changedText: (String) -> Unit) {
     addTextChangedListener(object : TextWatcher {
         override fun onTextChanged(
-            s: CharSequence, start: Int, before: Int,
+            s: CharSequence,
+            start: Int,
+            before: Int,
             count: Int
         ) {
         }
 
         override fun beforeTextChanged(
-            s: CharSequence, start: Int, count: Int,
+            s: CharSequence,
+            start: Int,
+            count: Int,
             after: Int
         ) {
         }

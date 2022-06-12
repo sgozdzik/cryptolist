@@ -35,7 +35,6 @@ class CurrencyListAdapter(private val clickListener: (CurrencyDetailedInfoItem) 
             oldItem: CurrencyDetailedInfoItem,
             newItem: CurrencyDetailedInfoItem
         ): Boolean = oldItem == newItem
-
     }
 }
 
@@ -54,5 +53,4 @@ class CurrencyItemViewHolder(
     fun bind(currencyInfoItem: CurrencyDetailedInfoItem) {
         binding.item = currencyInfoItem
     }
-
 }
