@@ -21,5 +21,4 @@ class CurrencyInfoRemoteRepository @Inject constructor(
         service.getAllCoins(1).getOrThrow()?.map {
             mapper.mapToDomain(it)
         } ?: emptyList()
-
 }

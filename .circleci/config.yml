@@ -5,6 +5,19 @@ orbs:
   gcp-cli: circleci/gcp-cli@2.2.0
 
 jobs:
+  spotless-check:
+    executor:
+      name: android/android-machine
+      resource-class: xlarge
+    steps:
+      - checkout
+      - android/restore-gradle-cache
+      - android/restore-build-cache
+      - android/run-tests:
+          test-command: ./gradlew spotlessCheck
+      - android/save-gradle-cache
+      - android/save-build-cache
+
   unit-test:
     executor:
       name: android/android-machine
@@ -71,6 +84,7 @@ workflows:
   test-and-build:
     jobs:
       - unit-test
+      - spotless-check
       - android/run-ui-tests:
           filters:
             branches:

@@ -26,6 +26,7 @@ Most of UI components which are used in application are part of my other project
 ## Additional notes
 
 - Circle CI (base implementation of unit and UI tests)
+- Spotless check in Circle CI after opening PR
 - StateEvent - I added this to handle single time events - like showing snackbars, toasts or navigating to different screens after fetching some data
 - UseCase - base UseCase class that can be used globally 
 - Dividing packages according to Clean Architecture pattern along with domain / data / presentation model mappers 

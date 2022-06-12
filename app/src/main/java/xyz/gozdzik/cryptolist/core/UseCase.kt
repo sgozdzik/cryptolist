@@ -1,6 +1,10 @@
 package xyz.gozdzik.cryptolist.core
 
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 abstract class UseCase<out TYPE, in PARAMETERS>(
     private val taskScheduler: CoroutineDispatcher = Dispatchers.IO,
@@ -17,5 +21,4 @@ abstract class UseCase<out TYPE, in PARAMETERS>(
             }
         }
     }
-
 }

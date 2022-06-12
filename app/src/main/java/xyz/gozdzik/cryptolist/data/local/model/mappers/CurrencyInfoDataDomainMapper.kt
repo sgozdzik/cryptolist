@@ -21,5 +21,4 @@ class CurrencyInfoDataDomainMapper @Inject constructor() :
             domain.name,
             domain.symbol
         )
-
 }

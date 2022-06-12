@@ -19,5 +19,4 @@ enum class SortParameter(@StringRes val displayName: Int) : SingleChoiceItem<Sor
 
     override val enum: Enum<SortParameter>
         get() = this
-
 }

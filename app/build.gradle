@@ -4,8 +4,11 @@ plugins {
     id 'androidx.navigation.safeargs'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
-    id 'kotlin-parcelize'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
 }
+
+apply from: "$project.rootDir/spotless.gradle"
 
 android {
     compileSdk 32

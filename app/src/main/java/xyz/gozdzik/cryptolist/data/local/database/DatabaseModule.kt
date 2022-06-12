@@ -26,5 +26,4 @@ class DatabaseModule {
     @Provides
     fun provideCurrencyInfoDao(appDatabase: AppDatabase) =
         appDatabase.currencyInfoDao()
-
 }

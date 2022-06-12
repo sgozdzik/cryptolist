@@ -7,5 +7,4 @@ interface CurrencyInfoRepository {
     suspend fun insertAll(currencies: List<CurrencyInfo>)
 
     suspend fun getAll(): List<CurrencyInfo>
-
 }

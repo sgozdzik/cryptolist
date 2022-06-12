@@ -22,4 +22,3 @@ enum class CurrencyListMenuItem(
     override val enum: Enum<CurrencyListMenuItem>
         get() = this
 }
-

@@ -18,7 +18,8 @@ class SortBottomSheetFragment : SingleChoiceBottomSheetFragment<SortParameter>()
 
     override fun setNavigationResult(choice: SingleChoiceItem<SortParameter>) {
         setFragmentResult(
-            REQUEST_KEY, bundleOf(
+            REQUEST_KEY,
+            bundleOf(
                 CHOICE to choice.enum
             )
         )
@@ -32,7 +33,5 @@ class SortBottomSheetFragment : SingleChoiceBottomSheetFragment<SortParameter>()
 
         const val REQUEST_KEY = "SortBottomSheetRequestKey"
         const val CHOICE = "Choice"
-
     }
-
 }

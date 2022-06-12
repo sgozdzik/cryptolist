@@ -8,8 +8,7 @@ const val APP_DATABASE_NAME = "CurrencyDatabase"
 private const val APP_DATABASE_VERSION = 1
 
 @Database(entities = [CurrencyInfoDatabaseDto::class], version = APP_DATABASE_VERSION)
-abstract class AppDatabase: RoomDatabase() {
+abstract class AppDatabase : RoomDatabase() {
 
     abstract fun currencyInfoDao(): CurrencyInfoDao
-
 }
