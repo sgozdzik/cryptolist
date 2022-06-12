@@ -47,20 +47,4 @@ object RemoteModule {
     @Singleton
     fun provideCoinGeckoService(retrofit: Retrofit) = retrofit.create(CoinGeckoService::class.java)
 
-    @Provides
-    fun provideCurrencyInfoRemoteDataDomainMapper(): CurrencyInfoRemoteDataDomainMapper =
-        CurrencyInfoRemoteDataDomainMapper()
-
-    @Provides
-    fun provideCurrencyInfoRemoteRepository(
-        service: CoinGeckoService,
-        mapper: CurrencyInfoRemoteDataDomainMapper
-    ): CurrencyInfoRemoteRepository =
-        CurrencyInfoRemoteRepository(service, mapper)
-
-    @Provides
-    fun provideGetCurrenciesFromRemoteUseCase(currencyInfoRepository: CurrencyInfoRemoteRepository)
-            : GetCurrenciesFromRemoteUseCase =
-        GetCurrenciesFromRemoteUseCase(currencyInfoRepository)
-
 }

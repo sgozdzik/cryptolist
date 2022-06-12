@@ -3,8 +3,9 @@ package xyz.gozdzik.cryptolist.presentation.currencylist
 import xyz.gozdzik.cryptolist.presentation.model.CurrencyDetailedInfoItem
 import xyz.gozdzik.cryptolist.presentation.model.FilterParameters
 import xyz.gozdzik.cryptolist.presentation.model.SortParameter
+import javax.inject.Inject
 
-class CurrencyInfoItemFilterer {
+class CurrencyInfoItemFilterer @Inject constructor() {
 
     fun applyFilterParameters(
         filterParameter: FilterParameters,

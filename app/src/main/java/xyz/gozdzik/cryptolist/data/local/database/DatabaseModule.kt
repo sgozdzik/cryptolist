@@ -17,12 +17,11 @@ class DatabaseModule {
     @Singleton
     fun provideAppDatabase(
         @ApplicationContext appContext: Context,
-    ) =
-        Room.databaseBuilder(
-            appContext,
-            AppDatabase::class.java,
-            APP_DATABASE_NAME
-        ).build()
+    ) = Room.databaseBuilder(
+        appContext,
+        AppDatabase::class.java,
+        APP_DATABASE_NAME
+    ).build()
 
     @Provides
     fun provideCurrencyInfoDao(appDatabase: AppDatabase) =
