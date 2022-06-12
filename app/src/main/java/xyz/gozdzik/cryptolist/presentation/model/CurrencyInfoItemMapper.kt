@@ -5,8 +5,9 @@ import xyz.gozdzik.cryptolist.core.utils.toPercentageValue
 import xyz.gozdzik.cryptolist.core.utils.toUsdCurrency
 import xyz.gozdzik.cryptolist.domain.model.CurrencyDetailedInfo
 import java.math.BigDecimal
+import javax.inject.Inject
 
-class CurrencyInfoItemMapper :
+class CurrencyInfoItemMapper @Inject constructor() :
     PresentationDomainMapper<CurrencyDetailedInfo, CurrencyDetailedInfoItem> {
 
     override fun mapToDomain(item: CurrencyDetailedInfoItem): CurrencyDetailedInfo =

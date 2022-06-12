@@ -3,9 +3,11 @@ package xyz.gozdzik.cryptolist.data.remote.model.mappers
 import xyz.gozdzik.cryptolist.core.DataDomainMapper
 import xyz.gozdzik.cryptolist.data.remote.model.CurrencyInfoRemoteDto
 import xyz.gozdzik.cryptolist.domain.model.CurrencyDetailedInfo
+import javax.inject.Inject
 
-class CurrencyInfoRemoteDataDomainMapper : DataDomainMapper<CurrencyDetailedInfo,
-        CurrencyInfoRemoteDto> {
+class CurrencyInfoRemoteDataDomainMapper @Inject constructor() :
+    DataDomainMapper<CurrencyDetailedInfo,
+            CurrencyInfoRemoteDto> {
 
     override fun mapToDomain(data: CurrencyInfoRemoteDto): CurrencyDetailedInfo =
         CurrencyDetailedInfo(
