@@ -1,34 +1,39 @@
 ![Screenshot](https://github.com/sgozdzik/cryptolist/blob/master/screenshot.jpg?raw=true)
 
-## Comments to tasks
+# About application
 
-### CurrencyListFragment should receive an array list of CurrencyInfo to create the ui.
-I implemented as it was described - CurrencyListFragment is getting array from DemoFragment.
-### DemoActivity should provide 1 dataset, Currency List A of CurrencyInfo to CurrencyListFragment and the dataset should be queried from local db
-I used **Room** as a database. I added prepopulating it from Json file you provided. It would be easier to do it using Scheme and function from Room library - but I decided to add additional Json parsing and prepopulating from it as an additional example of coding skills. 
-### DemoActivity should provide 2 buttons to do the demo. First button to load the data and display. Second button for sorting currency list
-DemoFragment (I decided to put login into fragments instead of activity) has UI button to fetch data from DB, after that it goes to CurrencyListFragment. Sorting and searching is done after clicking buttons in toolbar in CurrencyListFragment.
-### CurrencyListFragment should provide a hook of item click listener to the parent
-After clicking an item toolbar is changing it's name to currency name.
-### All the IO operations ​MUST NOT ​be in UI Thread.
-IO operations were done using Kotlin Coroutines and Kotlin Flow.
-### Please ​show how to handle ​multi threading operation​, and deal with ​concurrency issue​ when do sorting (fast double click of sorting button)
-Concurrency is done by Kotlin Flow and also using it's update function. Like described here: https://proandroiddev.com/make-sure-to-update-your-stateflow-safely-in-kotlin-9ad023db12ba . Also I added StateEvent class for handling single time events in application (like showing some snackbar / toast or navigating to different screen after fetching some data)
-### Search functionality is not required
-I added it anyway. 
+## Purpose
+This app was made to show programming skills and knowledge in Android development & Clean Architecture pattern. It's very small and compact.
 
+## Functionality
+- displaying crypto list from CoinGecko API along with price and price change in last 24h
+- searching by user input
+- sorting by market cap or alphabetically
 
-## Things that should be added
-Application ofcourse is only demo example. It should also have things like:
+## UI
+Most of UI components which are used in application are part of my other project - library Serfa Design. You can find more details here:
 
-- error handling
-- UI tests
-- UX for different sorting types (I added in code possibility to sort by name ascending, descending, but it's not implemented in UI).
-- UI loader - for showing user that something is happening in background (like in fetching the data from database)
+[**Serfa Design Repository**](https://github.com/sgozdzik/serfadesign) 
 
-## Things added additionaly
+## Used technologies, patterns and libraries
+- Retrofit
+- Coroutines
+- Kotlin Flow
+- Clean Architecture
+- Room database
+- Navigation Graph
+
+## Additional notes
 
 - Circle CI (base implementation of unit and UI tests)
 - StateEvent - I added this to handle single time events - like showing snackbars, toasts or navigating to different screens after fetching some data
 - UseCase - base UseCase class that can be used globally 
 - Dividing packages according to Clean Architecture pattern along with domain / data / presentation model mappers 
+
+## Things to improve and to do in future
+
+### Favorite 
+One of the goals is to add user possibility to save favorites cryptos and display them in different tab / screen. Implementation of room database is partly ready.
+
+### Crypto details
+User should be able to enter crypto details screen after clicking on it on the list. In that screen app should display some additional details like for example charts.
