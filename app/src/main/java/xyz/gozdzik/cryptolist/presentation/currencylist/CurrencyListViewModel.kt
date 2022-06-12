@@ -6,17 +6,19 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import xyz.gozdzik.cryptolist.domain.usecase.GetCurrenciesFromRemoteUseCase
 import xyz.gozdzik.cryptolist.presentation.model.*
+import xyz.gozdzik.cryptolist.presentation.model.mapper.CurrencyInfoItemMapper
 import javax.inject.Inject
 
 @HiltViewModel
 class CurrencyListViewModel @Inject constructor(
     private val currencyInfoItemFilterer: CurrencyInfoItemFilterer,
-    private val getCurrenciesFromRemoteUseCase: GetCurrenciesFromRemoteUseCase
+    private val getCurrenciesFromRemoteUseCase: GetCurrenciesFromRemoteUseCase,
+    private val currencyInfoItemMapper: CurrencyInfoItemMapper
 ) : ViewModel() {
 
-    private val currencyInfoItemMapper = CurrencyInfoItemMapper()
     private val currenciesInfoItems = MutableStateFlow<List<CurrencyDetailedInfoItem>>(emptyList())
     private val filterParameters = MutableStateFlow(FilterParameters())
+
     val currenciesInfoItemsObservable: StateFlow<List<CurrencyDetailedInfoItem>>
         get() = currenciesInfoItems.combine(
             filterParameters

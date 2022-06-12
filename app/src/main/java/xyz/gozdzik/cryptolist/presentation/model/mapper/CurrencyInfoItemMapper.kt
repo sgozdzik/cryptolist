@@ -1,10 +1,10 @@
-package xyz.gozdzik.cryptolist.presentation.model
+package xyz.gozdzik.cryptolist.presentation.model.mapper
 
 import xyz.gozdzik.cryptolist.core.PresentationDomainMapper
 import xyz.gozdzik.cryptolist.core.utils.toPercentageValue
 import xyz.gozdzik.cryptolist.core.utils.toUsdCurrency
 import xyz.gozdzik.cryptolist.domain.model.CurrencyDetailedInfo
-import java.math.BigDecimal
+import xyz.gozdzik.cryptolist.presentation.model.CurrencyDetailedInfoItem
 import javax.inject.Inject
 
 class CurrencyInfoItemMapper @Inject constructor() :

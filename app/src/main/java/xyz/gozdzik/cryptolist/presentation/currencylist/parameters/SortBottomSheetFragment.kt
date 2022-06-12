@@ -30,8 +30,8 @@ class SortBottomSheetFragment : SingleChoiceBottomSheetFragment<SortParameter>()
 
     companion object {
 
-        val REQUEST_KEY = "SortBottomSheetRequestKey"
-        val CHOICE = "Choice"
+        const val REQUEST_KEY = "SortBottomSheetRequestKey"
+        const val CHOICE = "Choice"
 
     }
 
